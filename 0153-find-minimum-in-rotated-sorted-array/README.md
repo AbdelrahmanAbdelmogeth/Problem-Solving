@@ -46,5 +46,5 @@
 </div>
 
 # Solution
+![Find Minimum in rotated sorted array](https://github.com/user-attachments/assets/60f8f144-77cd-43c4-80bd-87520f038b4e)
 
-!Solution https://github.com/AbdelrahmanAbdelmogeth/Problem-Solving/blob/main/0153-find-minimum-in-rotated-sorted-array/Find%20Minimum%20in%20rotated%20sorted%20array.gif
