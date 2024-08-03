@@ -47,4 +47,4 @@
 
 # Solution
 
-![Solution] https://github.com/AbdelrahmanAbdelmogeth/Problem-Solving/blob/main/0153-find-minimum-in-rotated-sorted-array/Find%20Minimum%20in%20rotated%20sorted%20array.gif
+!Solution https://github.com/AbdelrahmanAbdelmogeth/Problem-Solving/blob/main/0153-find-minimum-in-rotated-sorted-array/Find%20Minimum%20in%20rotated%20sorted%20array.gif
