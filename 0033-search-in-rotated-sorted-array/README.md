@@ -54,8 +54,8 @@ Linear Search: Loop through the array from index 0 to the end and compare each e
     - if the target is greater or equal to the arr[low] and it's smaller than arr[mid]
       in this case we update the high index to be ``high = mid - 1`` that means our target in the left for sure
     - else our target is on the right and we need to update the low index to be ``low = mid + 1``
-      
-  2. The other Alternative the right half is sorted
+
+   2. The other Alternative the right half is sorted
      this means the array is like this [3,0,1,2]
      In this case, we have two cases to consider to update our low or high indices
      - if the target is greater than arr[mid] and it's smaller than or equal arr[mid]
