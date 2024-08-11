@@ -28,7 +28,8 @@
 	<li><code>-10<sup>4</sup> &lt;= target &lt;= 10<sup>4</sup></code></li>
 </ul>
 </div>
-Solution
+
+# Solution
 
 ### Naive Solution O(n) :
 
@@ -37,46 +38,30 @@ Linear Search: Loop through the array from index 0 to the end and compare each e
 ### Fast Solution [Binary Search] O(n log n):
 
 1. Start with a normal binary search
-  
   ```
   low = 0, high = len(arr) - 1
   mid = low + (high - low) / 2
   ```
-  
 2. We need to decide which half of the array is sorted. which one to skip and which one to search for.
   An Original array would be : [0,1,2,3,4,5,6] 
   The Rotated array : [3,4,5,6,0,1,2] or [4,5,6,0,1,2,3]
   
   1. The left half is sorted
-    
-    We can achieve that by comparing the middle element with the one at low index :
-    
-    ```
-    if(arr[low] <= arr[mid])
-    ```
-    
+    We can achieve that by comparing the middle element with the one at low index : 
+    ``if(arr[low] <= arr[mid])``
     this means the array is like this [3,4,5,6,0,1,2] or maybe there is a case where it's repeated like this [3,3,3,3,0,1,2] (corner case)
-    
-    In this case, we have two cases to consider when update our low or high indices
-    
+    In this case, we have two cases to consider when updating our low or high indices
     - if the target is greater or equal to the arr[low] and it's smaller than arr[mid]
-      
       in this case we update the high index to be ``high = mid - 1`` that means our target in the left for sure
-      
     - else our target is on the right and we need to update the low index to be ``low = mid + 1``
       
   2. The other Alternative the right half is sorted
-    
-    this means the array is like this [3,0,1,2]
-    
-    In this case, we have two cases to consider to update our low or high indices
-    
-    - if the target is greater than arr[mid] and it's smaller than or equal arr[mid]
-      
-      in this case we update the high index to be `low = mid + 1` which means our target on the right for sure
-      
-    - else our target is on the left and we need to update low index to be `high = mid - 1`
-      
+     this means the array is like this [3,0,1,2]
+     In this case, we have two cases to consider to update our low or high indices
+     - if the target is greater than arr[mid] and it's smaller than or equal arr[mid]
+       in this case, we update the high index to be `low = mid + 1` which means our target is on the right for sure
+    - else our target is on the left and we need to update the low index to be ``high = mid - 1``
+     
   3. when to stop as usual binary search we stop when ``low > high``
-    
-  4. When no element is found by comparing each ``arr[mid] == target`` we return -1 or return mid if a target has been found.
+     
+  5. When no element is found by comparing each ``arr[mid] == target`` we return -1 or return mid if a target has been found.
