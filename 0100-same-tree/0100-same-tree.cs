@@ -18,7 +18,5 @@ public class Solution {
         if(p.val != q.val) return false; // values are not the same
         
         return IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right);
-        
-        return true;
     }
 }
