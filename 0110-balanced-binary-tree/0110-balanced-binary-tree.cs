@@ -11,6 +11,7 @@
  *     }
  * }
  */
+
 public class Solution {
     public bool IsBalanced(TreeNode root) {
         return CheckBalance(root) != -1;
@@ -30,3 +31,32 @@ public class Solution {
         return Math.Max(leftHeight, rightHeight) + 1;
     }
 }
+
+
+
+/*
+//O(N^2) time Complexity
+public class Solution {
+    public bool IsBalanced(TreeNode root) {
+        if (root == null) return true;
+        
+        int leftHeight = GetHeight(root.left);
+        int rightHeight = GetHeight(root.right);
+        
+        int absHeight = Math.Abs(leftHeight - rightHeight);
+        if (absHeight <= 1 && IsBalanced(root.left) && IsBalanced(root.right)) {
+            return true;
+        }
+        return false;    
+    }
+    
+    private int GetHeight(TreeNode node) {
+        if (node == null) return 0;
+        
+        int leftHeight = GetHeight(node.left);
+        int rightHeight = GetHeight(node.right);
+        
+        return Math.Max(leftHeight, rightHeight) + 1;
+    }
+}
+*/
