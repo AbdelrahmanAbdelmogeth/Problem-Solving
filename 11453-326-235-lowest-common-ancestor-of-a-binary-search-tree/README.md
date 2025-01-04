@@ -35,3 +35,24 @@
 	<li><code>p</code> and <code>q</code> will exist in the BST.</li>
 </ul>
 </div>
+
+# Lowest Common Ancestor (LCA) Solution
+
+## Problem Overview
+The task is to find the **Lowest Common Ancestor (LCA)** of two nodes (`p` and `q`) in a **binary tree**. The **LCA** is defined as the deepest node that is an ancestor to both `p` and `q`. We approach this problem using a method that builds the paths from the root to the nodes and finds the last common node.
+
+## Approach
+
+### Step 1: Path Discovery
+We start by finding the paths from the root node to both `p` and `q`. We use a helper function `FindPath` to do this:
+- Traverse the tree recursively.
+- For each node, we add it to the path if it’s part of the path from the root to the target node.
+- If the target node is found, we return `true`, and if not, we backtrack.
+
+### Step 2: Compare the Paths
+Once we have the paths from the root to `p` and from the root to `q`, we compare them:
+- We compare each node in both paths.
+- The first divergence (i.e., where the nodes in the paths don’t match) gives us the **last common node**, which is the **LCA**.
+
+### Step 3: Return the LCA
+The node where the paths diverge is the **LCA**. If the paths are identical up to a certain point, that node is the **LCA**. We return the last matching node.
