@@ -10,19 +10,22 @@
 
 public class Solution {
     public TreeNode LowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        // Lists to store the paths from root to p and root to q
         List<TreeNode> pNodePath = new List<TreeNode>();
         List<TreeNode> qNodePath = new List<TreeNode>();
         
+        // Find The paths to the nodes given
         if(FindPath(root, p, pNodePath) == false || FindPath(root, q, qNodePath) == false)
             return null;
         
         int i;
+        // Loop through both paths and find the last common node
         for (i = 0; i < pNodePath.Count && i < qNodePath.Count; i++) {
-            if (pNodePath[i] != qNodePath[i])
+            if (pNodePath[i] != qNodePath[i]) // // If the nodes at index i are different, break out of the loop
                 break;
         }
         
-        return pNodePath[i - 1]; // Return the last common ancestor
+        return pNodePath[i - 1]; // Return the last common node in the paths, which is the LCA
     }
     
     private bool FindPath(TreeNode root, TreeNode node, List<TreeNode> NodePath) {
