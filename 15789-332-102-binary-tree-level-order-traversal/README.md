@@ -28,3 +28,46 @@
 	<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 </div>
+
+# **Binary Tree Level Order Traversal**
+
+## 📚 **Problem Statement**
+
+Given the `root` of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+
+---
+
+## 🛠️ **Solution Explanation**
+
+### **Approach: BFS Using a Queue (Level Order Traversal)**
+
+1. **Initialize Data Structures:**
+   - Use a `Queue` to store nodes level by level.
+   - Use a `List<IList<int>>` to store values of nodes at each level.
+
+2. **Handle Edge Case:**
+   - If the `root` is `null`, return an empty list.
+
+3. **Level-by-Level Traversal:**
+   - Start by enqueueing the `root` node.
+   - While the queue is not empty:
+     - Determine the number of nodes at the current level (`levelSize`).
+     - Process each node at this level:
+       - Dequeue the node and add its value to the current level's list.
+       - Enqueue its left and right children if they exist.
+     - Add the current level's list to the result.
+
+4. **Return the Result:**
+   - Return the list of levels after processing all nodes.
+
+---
+
+## 📊 Complexity Analysis
+### Time Complexity:
+- O(n), where n is the number of nodes in the binary tree.
+- Each node is enqueued and dequeued exactly once, and processing each node (adding to the result list) takes constant time.
+### Space Complexity:
+- O(n) in the worst case.
+- The queue can hold up to n/2 nodes in the last level of a complete binary tree.
+- Additionally, the result list will store all node values.
+
