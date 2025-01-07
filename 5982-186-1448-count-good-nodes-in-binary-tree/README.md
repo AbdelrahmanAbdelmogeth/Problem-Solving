@@ -37,3 +37,32 @@ Node 3 -&gt; (3,1,3) is the maximum value in the path.</pre>
 	<li>The number of nodes in the binary tree is in the range&nbsp;<code>[1, 10^5]</code>.</li>
 	<li>Each node's value is between <code>[-10^4, 10^4]</code>.</li>
 </ul></div>
+
+# 🌳 Count Good Nodes in Binary Tree
+
+## 📚 Problem Description
+
+A **good node** in a binary tree is defined as a node where:
+
+- Its value is **greater than or equal to** all node values encountered on the path from the **root to that node**.
+
+### 🧠 Objective
+
+- Count the total number of **good nodes** in the binary tree.
+
+---
+
+## 🚀 Approach
+
+- Use **Pre-Order Traversal** to visit each node.  
+- Pass the **maximum value** observed so far along the path from the root.  
+- At each node:
+   - If the node's value is **greater than or equal to** the maximum value in the path, **increment the good node counter**.  
+   - Update the **maximum value** if necessary.  
+- Recursively repeat the process for **left** and **right** children.
+
+---
+
+## 📊 Complexity Analysis
+- Time Complexity: O(N) — Each node is visited once.
+- Space Complexity: O(H) — Where H is the height of the tree (due to the recursive call stack).
