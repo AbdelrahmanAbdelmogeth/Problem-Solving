@@ -26,3 +26,47 @@
 <p>&nbsp;</p>
 <p><strong>Follow up:</strong> If the BST is modified often (i.e., we can do insert and delete operations) and you need to find the kth smallest frequently, how would you optimize?</p>
 </div>
+
+# K-th Smallest Element in a Binary Search Tree (BST)
+
+This solution finds the **K-th smallest element** in a Binary Search Tree (BST) using **in-order traversal**. Here’s a detailed breakdown of the problem, approach, implementation, and complexity analysis.
+
+---
+
+## Problem Description
+Given the root of a binary search tree (BST) and an integer `k`, find the K-th smallest element in the BST. A BST is a binary tree where:
+1. The left subtree contains only nodes with values less than the parent node.
+2. The right subtree contains only nodes with values greater than the parent node.
+3. Both subtrees are also binary search trees.
+
+---
+
+## Approach
+
+### Why In-Order Traversal?
+A Fact about the BST --> The k-th visited node is the K-th smallest element in the tree
+In-order traversal of a BST visits the nodes in **ascending order**. This means:
+1. Traverse the left subtree.
+2. Visit the root node.
+3. Traverse the right subtree.
+
+By counting the nodes visited during this traversal, the K-th visited node is the K-th smallest element in the tree.
+
+---
+
+## Steps to Solve
+1. **Perform an In-Order Traversal**:
+   - Visit nodes in the left subtree first (smaller values).
+   - Count each visited node.
+   - When the count reaches `k`, record the value of the current node as the answer.
+   - If `k` is found, stop the traversal early to avoid unnecessary operations.
+
+2. **Recursive Implementation**:
+   - A helper function, `KthSmallestInorderTraversal`, is used for the in-order traversal.
+   - Use a counter (`count`) to track the position during traversal.
+   - Store the result in a variable (`answer`) once the K-th smallest element is identified.
+
+---
+
+## Time Complexity: O(n)
+## Space Comlexity: O(n)
