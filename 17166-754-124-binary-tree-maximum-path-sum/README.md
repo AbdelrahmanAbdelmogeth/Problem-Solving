@@ -65,3 +65,9 @@ This is given by:
 root.val + Math.Max(leftMax, rightMax)
 ```
 It includes the node's value and the greater of the left or right subtree's contribution.  
+
+## Complexity Analysis
+- Time Complexity: 
+𝑂(𝑛) Each node is visited exactly once during the traversal.
+- Space Complexity: 
+𝑂(ℎ) The space required is proportional to the height of the tree, due to the recursion stack.
