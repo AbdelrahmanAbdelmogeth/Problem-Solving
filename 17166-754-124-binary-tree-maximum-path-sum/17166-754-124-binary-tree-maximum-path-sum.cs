@@ -22,7 +22,7 @@ public class Solution {
         if(root == null) //base case return 0 if the node is null
             return 0;
 
-        // ordinary preorder
+        // ordinary postorder
         int leftMax = MaxPathSumPostOrderHelper(root.left); // traverse left subtree
         int rightMax = MaxPathSumPostOrderHelper(root.right); // traverse right subtree
 
