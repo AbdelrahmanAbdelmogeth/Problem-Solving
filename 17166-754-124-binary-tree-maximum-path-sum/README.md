@@ -28,3 +28,40 @@
 	<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 </div>
+
+# Solution: Maximum Path Sum in a Binary Tree
+
+This solution calculates the **maximum path sum** in a binary tree. The path can begin and end at any node, and it does not need to pass through the root.
+
+## Explanation of the Approach
+
+### 1. **Global Variable (`result`)**
+- A global variable `result` is used to store the maximum path sum encountered during the traversal of the tree.
+- It is initialized to `Int32.MinValue` to ensure any computed path sum will replace it.
+
+### 2. **Post-order Traversal**
+- The solution uses a **post-order traversal** (left → right → root) to explore the tree.
+- This ensures that for each node, the maximum contributions from its left and right subtrees are computed before processing the node itself.
+
+### 3. **Handling Negative Contributions**
+- If a subtree contributes a negative path sum, it is better to exclude it, as it would decrease the overall path sum.
+- To achieve this, the solution uses:
+  ```csharp
+  leftMax = Math.Max(leftMax, 0);
+  rightMax = Math.Max(rightMax, 0);
+  ```
+   
+### 4. **Updating the Global Maximum**
+- For each node, the potential maximum path sum that includes the current node as the highest point (root of the path) is calculated as:
+```csharp
+root.val + leftMax + rightMax
+```
+This value is compared with the global result variable, and result is updated if this value is larger.
+
+### 5. **Returning to the Parent**
+After calculating the maximum path sum involving the current node, the function needs to return the maximum contribution this node can provide to its parent.
+This is given by:
+```csharp
+root.val + Math.Max(leftMax, rightMax)
+```
+It includes the node's value and the greater of the left or right subtree's contribution.  
