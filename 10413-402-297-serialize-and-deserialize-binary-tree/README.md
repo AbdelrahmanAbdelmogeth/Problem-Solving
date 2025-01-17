@@ -31,7 +31,11 @@
 
 ## Overview
 Serialization and deserialization of a binary tree involve converting the tree structure into a string representation and reconstructing the tree from that string.
-A Naive Solution would be storing inorder traversal and another traversal maybe post or preorder but we can do better by doing only one traversal i will arbitrarily choose inorder (node -> left -> right) and store all node values even the null ones. This ensures that both the structure (node connections) and the values of the tree are fully captured in the serialized string.
+
+---
+
+A Naive Solution would be storing inorder traversal and another traversal, maybe post or preorder, but we can do better by doing only one traversal. I will arbitrarily choose inorder (node -> left -> right) and store all node values, even the null ones. This ensures that both the structure (node connections) and the values of the tree are fully captured in the serialized string.
+
 ---
 
 ### Serialization
