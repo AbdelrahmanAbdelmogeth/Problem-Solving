@@ -26,3 +26,82 @@
 	<li><code>-1000 &lt;= Node.val &lt;= 1000</code></li>
 </ul>
 </div>
+
+# Binary Tree Serialization and Deserialization Explanation
+
+## Overview
+Serialization and deserialization of a binary tree involve converting the tree structure into a string representation and reconstructing the tree from that string.
+A Naive Solution would be storing inorder traversal and another traversal maybe post or preorder but we can do better by doing only one traversal i will arbitrarily choose inorder (node -> left -> right) and store all node values even the null ones. This ensures that both the structure (node connections) and the values of the tree are fully captured in the serialized string.
+---
+
+### Serialization
+- **Purpose**: Convert the binary tree into a single string that represents its structure and values.
+- **Approach**:
+  - Use **in-order traversal** (visit node, left subtree, then right subtree).
+  - Append the value of each node to a `StringBuilder` for efficiency.
+  - Use `#` to represent null nodes.
+  - Use `,` as a delimiter to separate node values.
+- **Why StringBuilder**: Unlike normal strings in C#, `StringBuilder` supports efficient mutation, making it ideal for appending values during traversal.
+
+---
+
+### Deserialization
+- **Purpose**: Reconstruct the binary tree from the serialized string.
+- **Approach**:
+  - Split the serialized string using `,` into an array or queue of values.
+  - Use a **queue**:
+    - A queue ensures sequential access to the nodes, matching the order in which they were serialized.
+    - Eliminates the need to maintain an explicit index.
+  - Recursively reconstruct the tree:
+    - If the current value is `#`, return `null` (indicating no child).
+    - Otherwise, create a new `TreeNode` with the value.
+    - Recur for the left and right children.
+
+---
+
+### Why Use a Queue?
+- The nodes are processed in the same order as they were serialized (in-order traversal).
+- A queue simplifies managing the traversal order without needing explicit indexing.
+
+---
+
+### Key Points
+1. **Null Nodes**:
+   - Represented by `#` during serialization to capture tree structure.
+   - Prevents ambiguity when deserializing.
+   
+2. **Efficiency**:
+   - `StringBuilder` ensures efficient serialization with minimal memory allocation.
+   - A queue eliminates unnecessary array indexing during deserialization.
+
+3. **Traversal**:
+   - In-order traversal ensures nodes are visited and serialized in a logical order, making deserialization straightforward.
+
+4. **Base Cases**:
+   - Serialization: Append `#` for null nodes.
+   - Deserialization: Stop recursion when the queue is empty or when encountering `#`.
+
+---
+
+### Workflow
+1. **Serialization**:
+   - Start at the root.
+   - Traverse the tree recursively using in-order traversal.
+   - Build the string by appending values and `#` for null nodes.
+
+2. **Deserialization**:
+   - Split the serialized string into a queue.
+   - Recursively reconstruct the tree, processing nodes in the order they appear.
+
+---
+
+### Advantages
+- Compact representation of the binary tree.
+- Easy to debug due to the clear mapping of serialized string to tree structure.
+- Efficient in both time and space when processing large trees.
+
+### Overall Complexity
+- Time Complexity: O(n) for both serialization and deserialization.
+- Space Complexity:
+  - O(n) for storing the serialized string or input queue.
+  - O(h) additional space for the recursion stack during traversal, where h is the height of the tree.
