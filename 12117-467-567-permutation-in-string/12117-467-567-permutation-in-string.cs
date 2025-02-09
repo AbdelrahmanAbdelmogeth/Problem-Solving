@@ -52,48 +52,76 @@ public class Solution {
           │ Start        │
           └────┬─────────┘
                ▼
-     ┌───────────────────┐
-     │ Initialize arrays │
-     │ s1Map & s2Map[26] │
-     └───────────────────┘
-               ▼
-     ┌───────────────────┐
-     │ Fill maps for s1  │
-     │ and first window  │
-     └───────────────────┘
-               ▼
-     ┌───────────────────┐
-     │ Count initial     │
-     │ character matches │
-     └───────────────────┘
-               ▼
-     ┌───────────────────┐
-     │ Iterate with      │
-     │ sliding window    │
-     └───────────────────┘
-               ▼
-   ┌───────────┬───────────┐
-   │ Matches == 26?        │
-   │ (All chars match?)    │
-   └───────────┴───────────┘
-       Yes ▼       No ▼
-    ┌──────────┐  ┌──────────────────┐
-    │ Return   │  │ Slide the window │
-    │ true     │  │ - Add new char   │
-    └──────────┘  │ - Remove old char│
-                  └──────────────────┘
-                              ▼
-                    ┌──────────────────┐
-                    │ Update matches   │
-                    │ based on changes │
-                    └──────────────────┘
-                              ▼
-                         ┌─────────┐
-                         │ Loop End│───No──►(Repeat Window Slide)
-                         └─────────┘
-                              ▼
-                         ┌─────────┐
-                         │ Return  │
-                         │ false   │
-                         └─────────┘
+     ┌───────────────────────────┐
+     │ Check if len(s1) > len(s2)│
+     └──────────┬────────────────┘
+                ▼
+        Yes ┌────────┐ No
+            │ Return │───────────┐
+            │ false  │           ▼
+            └────────┘  ┌──────────────────────────────┐
+                        │ Initialize two frequency     │
+                        │ arrays s1Map & s2Map [26]    │
+                        └──────────────────────────────┘
+                                        ▼
+                        ┌──────────────────────────────┐
+                        │ Fill frequency arrays for    │
+                        │ s1 and first window of s2    │
+                        └──────────────────────────────┘
+                                        ▼
+                        ┌──────────────────────────────┐
+                        │ Count initial character      │
+                        │ matches (s1Map == s2Map)     │
+                        └──────────────────────────────┘
+                                        ▼
+                        ┌──────────────────────────────┐
+                        │ Sliding window iteration     │
+                        │ through s2                   │
+                        └──────────────────────────────┘
+                                        ▼
+                      ┌───────────────────────────┐
+                      │ matches == 26 ?           │
+                      └────────────┬──────────────┘
+                   Yes ▼        No ▼
+               ┌──────────┐  ┌──────────────────┐
+               │ Return   │  │ Slide the window │
+               │ true     │  └──────────────────┘
+               └──────────┘            ▼
+                                ┌──────────────────────┐
+                                │ Add new character    │
+                                ├──────────────────────┤
+                                │ If s1Map[index] ==   │
+                                │ s2Map[index],        │
+                                │ Increment matches++  │
+                                ├──────────────────────┤
+                                │ If s1Map[index] + 1  │
+                                │ == s2Map[index],     │
+                                │ Decrement matches--  │
+                                └──────────────────────┘
+                                            ▼
+                                ┌──────────────────────┐
+                                │ Remove old character │
+                                ├──────────────────────┤
+                                │ If s1Map[index] ==   │
+                                │ s2Map[index],        │
+                                │ Decrement matches--  │
+                                ├──────────────────────┤
+                                │ If s1Map[index] - 1  │
+                                │ == s2Map[index],     │
+                                │ Increment matches++  │
+                                └──────────────────────┘
+                                            ▼
+                                ┌──────────────────────┐
+                                │ Move window forward  │
+                                └──────────────────────┘
+                                            ▼
+                         ┌────────────────────────┐
+                         │ Loop until s2 is done  │
+                         │ If matches == 26, true │
+                         └─────────┬──────────────┘
+                                   ▼
+                            ┌─────────┐
+                            │ Return  │
+                            │ false   │
+                            └─────────┘
 */
