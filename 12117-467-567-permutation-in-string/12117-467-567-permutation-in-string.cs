@@ -29,7 +29,7 @@ public class Solution {
             s2Map[index]++;
             if (s1Map[index] == s2Map[index])
                 matches++;
-            else if (s1Map[index] + 1 == s2Map[index]) // means the s2 exceed number of chars in s1
+            else if (s1Map[index] + 1 == s2Map[index]) // means the s2 exceed number of chars in s1 (no match anymore)
                 matches--;
 
             // Remove old character from the window
