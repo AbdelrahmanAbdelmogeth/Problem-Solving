@@ -25,3 +25,5 @@
 	<li><code>s1</code> and <code>s2</code> consist of lowercase English letters.</li>
 </ul>
 </div>
+
+![image](https://github.com/user-attachments/assets/f3b68523-d910-466b-b89d-74b95f8cd376)
