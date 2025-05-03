@@ -39,3 +39,40 @@ public class Solution {
     }
 
 }
+
+
+
+/*
+Start with index = 0, partitions = []
+
+├── Try "a" (s[0:1]) → Palindrome ✅
+│   └── partitions = ["a"]
+│
+│   ├── Try "a" (s[1:2]) → Palindrome ✅
+│   │   └── partitions = ["a", "a"]
+│   │
+│   │   ├── Try "b" (s[2:3]) → Palindrome ✅
+│   │   │   └── partitions = ["a", "a", "b"]
+│   │   │   └── index == 3 → END → ✅ add ["a", "a", "b"]
+│   │   │   └── Backtrack: remove "b" → ["a", "a"]
+│   │
+│   │   └── Backtrack: remove "a" → ["a"]
+│
+│   ├── Try "ab" (s[1:3]) → Not Palindrome ❌
+│
+│   └── Backtrack: remove "a" → []
+
+├── Try "aa" (s[0:2]) → Palindrome ✅
+│   └── partitions = ["aa"]
+│
+│   ├── Try "b" (s[2:3]) → Palindrome ✅
+│   │   └── partitions = ["aa", "b"]
+│   │   └── index == 3 → END → ✅ add ["aa", "b"]
+│   │   └── Backtrack: remove "b" → ["aa"]
+│
+│   └── Backtrack: remove "aa" → []
+
+├── Try "aab" (s[0:3]) → Not Palindrome ❌
+
+Done.
+*/
